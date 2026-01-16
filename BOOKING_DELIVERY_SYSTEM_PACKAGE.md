@@ -1,8 +1,8 @@
-# Booking & Delivery System - Complete Package
+# 📦 Booking & Delivery System Package
 
-This document contains all files needed for the booking and delivery system. Copy the entire structure below to your new project.
+Complete package of all files needed for the booking and delivery system. Copy the entire structure below to your new project.
 
-## 📁 Folder Structure
+## 📁 Required Folder Structure
 
 ```
 your-project/
@@ -95,194 +95,207 @@ your-project/
                 └── update-location/route.ts
 ```
 
-## 🔧 Installation Instructions
+## 📋 File Checklist
 
-### 1. Install Required Dependencies
+### Types (3 files)
+- [ ] `types/booking.ts` - Booking type definitions
+- [ ] `types/restaurant-staff.ts` - Staff type definitions
+- [ ] `types/delivery.ts` - Delivery & order type definitions
 
-```bash
-npm install @nkzw/create-context-hook @tanstack/react-query @react-native-async-storage/async-storage
-```
+### Contexts (5 files)
+- [ ] `contexts/BookingContext.tsx` - Booking state management
+- [ ] `contexts/RestaurantStaffAuthContext.tsx` - Staff authentication
+- [ ] `contexts/CartContext.tsx` - Shopping cart state
+- [ ] `contexts/OrderContext.tsx` - Order state management
+- [ ] `contexts/MenuContext.tsx` - Menu state management
 
-### 2. Firebase Setup
+### Utils (3 files)
+- [ ] `utils/bookingFirebase.ts` - Booking Firebase operations
+- [ ] `utils/staffFirebase.ts` - Staff Firebase operations
+- [ ] `utils/floorPlanFirebase.ts` - Floor plan Firebase operations
 
-Make sure you have Firebase configured in your project:
-- Firestore database enabled
-- Firebase config in `config/firebase.ts`
+### App Pages (11 files)
+- [ ] `app/booking.tsx` - User booking page
+- [ ] `app/cart.tsx` - Shopping cart page
+- [ ] `app/order-tracking.tsx` - Live order tracking
+- [ ] `app/(tabs)/(home)/menu.tsx` - Restaurant menu browsing
+- [ ] `app/restaurant/_layout.tsx` - Restaurant section layout
+- [ ] `app/restaurant/login.tsx` - Staff login
+- [ ] `app/restaurant/index.tsx` - Staff dashboard
+- [ ] `app/restaurant/reservations.tsx` - Manage reservations
+- [ ] `app/restaurant/availability.tsx` - Time slot management
+- [ ] `app/restaurant/floorplan.tsx` - Floor plan editor
+- [ ] `app/restaurant/notifications.tsx` - Staff notifications
 
-### 3. Copy Files
+### Backend Routes (43 files)
 
-Copy all the files from the structure above to your new project, maintaining the exact folder structure.
+#### Bookings (7 files)
+- [ ] `backend/trpc/routes/bookings/store.ts`
+- [ ] `backend/trpc/routes/bookings/get-all/route.ts`
+- [ ] `backend/trpc/routes/bookings/create/route.ts`
+- [ ] `backend/trpc/routes/bookings/update/route.ts`
+- [ ] `backend/trpc/routes/bookings/cancel/route.ts`
+- [ ] `backend/trpc/routes/bookings/get-availability/route.ts`
+- [ ] `backend/trpc/routes/bookings/set-availability/route.ts`
 
-### 4. Update App Layout
+#### Staff (7 files)
+- [ ] `backend/trpc/routes/staff/store.ts`
+- [ ] `backend/trpc/routes/staff/get-all/route.ts`
+- [ ] `backend/trpc/routes/staff/create/route.ts`
+- [ ] `backend/trpc/routes/staff/update/route.ts`
+- [ ] `backend/trpc/routes/staff/delete/route.ts`
+- [ ] `backend/trpc/routes/staff/authenticate/route.ts`
+- [ ] `backend/trpc/routes/staff/sync/route.ts`
 
-In your root `app/_layout.tsx`, wrap your app with the providers:
+#### Floor Plans (6 files)
+- [ ] `backend/trpc/routes/floorplans/store.ts`
+- [ ] `backend/trpc/routes/floorplans/get-all/route.ts`
+- [ ] `backend/trpc/routes/floorplans/get/route.ts`
+- [ ] `backend/trpc/routes/floorplans/create/route.ts`
+- [ ] `backend/trpc/routes/floorplans/update/route.ts`
+- [ ] `backend/trpc/routes/floorplans/delete/route.ts`
+
+#### Orders (7 files)
+- [ ] `backend/trpc/routes/orders/store.ts`
+- [ ] `backend/trpc/routes/orders/get-all/route.ts`
+- [ ] `backend/trpc/routes/orders/get/route.ts`
+- [ ] `backend/trpc/routes/orders/create/route.ts`
+- [ ] `backend/trpc/routes/orders/update-status/route.ts`
+- [ ] `backend/trpc/routes/orders/update-driver-location/route.ts`
+- [ ] `backend/trpc/routes/orders/stats/route.ts`
+
+#### Menu (7 files)
+- [ ] `backend/trpc/routes/menu/store.ts`
+- [ ] `backend/trpc/routes/menu/get-all/route.ts`
+- [ ] `backend/trpc/routes/menu/create/route.ts`
+- [ ] `backend/trpc/routes/menu/update/route.ts`
+- [ ] `backend/trpc/routes/menu/toggle-availability/route.ts`
+- [ ] `backend/trpc/routes/menu/delete/route.ts`
+- [ ] `backend/trpc/routes/menu/categories/route.ts`
+
+#### Drivers (5 files)
+- [ ] `backend/trpc/routes/drivers/store.ts`
+- [ ] `backend/trpc/routes/drivers/get-all/route.ts`
+- [ ] `backend/trpc/routes/drivers/create/route.ts`
+- [ ] `backend/trpc/routes/drivers/update/route.ts`
+- [ ] `backend/trpc/routes/drivers/update-location/route.ts`
+
+## 🔧 Setup Instructions
+
+### 1. Copy Files
+Copy all files listed above maintaining the exact folder structure.
+
+### 2. Update Root Layout
+In your `app/_layout.tsx`, wrap your app with the required providers:
 
 ```tsx
-import { BookingContext } from '@/contexts/BookingContext';
+import { BookingContextProvider } from '@/contexts/BookingContext';
 import { RestaurantStaffAuthProvider } from '@/contexts/RestaurantStaffAuthContext';
-import { CartContext } from '@/contexts/CartContext';
-import { OrderContext } from '@/contexts/OrderContext';
-import { MenuContext } from '@/contexts/MenuContext';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { CartProvider } from '@/contexts/CartContext';
 
-const queryClient = new QueryClient();
-
-export default function RootLayout() {
-  return (
-    <QueryClientProvider client={queryClient}>
-      <RestaurantStaffAuthProvider>
-        <BookingContext>
-          <CartContext>
-            <OrderContext>
-              <MenuContext>
-                {/* Your app content */}
-              </MenuContext>
-            </OrderContext>
-          </CartContext>
-        </BookingContext>
-      </RestaurantStaffAuthProvider>
-    </QueryClientProvider>
-  );
-}
+// Inside your root layout component:
+<RestaurantStaffAuthProvider>
+  <BookingContextProvider>
+    <CartProvider>
+      {/* Your app content */}
+    </CartProvider>
+  </BookingContextProvider>
+</RestaurantStaffAuthProvider>
 ```
 
-## 📋 Features Included
+### 3. Register Backend Routes
+In your `backend/trpc/app-router.ts`, import and register all routes:
+
+```tsx
+import { bookingsRouter } from './routes/bookings/store';
+import { staffRouter } from './routes/staff/store';
+import { floorplansRouter } from './routes/floorplans/store';
+import { ordersRouter } from './routes/orders/store';
+import { menuRouter } from './routes/menu/store';
+import { driversRouter } from './routes/drivers/store';
+
+export const appRouter = t.router({
+  bookings: bookingsRouter,
+  staff: staffRouter,
+  floorplans: floorplansRouter,
+  orders: ordersRouter,
+  menu: menuRouter,
+  drivers: driversRouter,
+});
+```
+
+### 4. Required Dependencies
+Ensure these packages are installed:
+
+```bash
+npm install @tanstack/react-query
+npm install @trpc/client @trpc/server
+npm install firebase
+npm install expo-location
+npm install react-native-calendars
+npm install lucide-react-native
+```
+
+### 5. Environment Variables
+Add to your `.env`:
+
+```
+EXPO_PUBLIC_GOOGLE_MAPS_API_KEY=your_key_here
+```
+
+### 6. Firebase Configuration
+Ensure Firebase is configured with:
+- Firestore collections: `bookings`, `staff`, `floorplans`, `orders`, `menuItems`, `drivers`
+- Firebase Authentication enabled
+- Proper security rules
+
+## 🎯 Features Included
 
 ### Booking System
-- ✅ User-side booking interface with calendar picker
-- ✅ Guest count, date, and time selection
 - ✅ Real-time availability checking
-- ✅ Two management modes: Guest Count & Table-Based
-- ✅ Staff dashboard with live service view
-- ✅ Walk-in management
-- ✅ Reservation actions (Arrived, Done, Cancel, No-show)
-- ✅ Table assignment for table-based mode
-- ✅ Floor plan editor with drag-and-drop
-- ✅ Availability settings (time slots, capacity)
-- ✅ Staff authentication and role-based permissions
-- ✅ Push notifications for new bookings
+- ✅ Floor plan table management
+- ✅ Time slot configuration
+- ✅ Reservation management (Arrived, Done, Cancel, No-show)
+- ✅ Staff dashboard with metrics
+- ✅ Today's bookings statistics
 
 ### Delivery System
 - ✅ Menu browsing with categories
-- ✅ Cart management with customizations
-- ✅ Order placement
+- ✅ Shopping cart management
 - ✅ Real-time order tracking
-- ✅ Driver location tracking
-- ✅ Order status management
-- ✅ Restaurant order dashboard
-- ✅ Delivery fee calculation
-- ✅ Order history
+- ✅ Live driver location on map
+- ✅ Order status updates
+- ✅ Restaurant order management
+- ✅ Dynamic delivery fee calculation
 
-## 🔑 Key Components
-
-### Booking System
-- **User Interface**: `app/booking.tsx`
-- **Staff Dashboard**: `app/restaurant/index.tsx`
-- **Reservations Management**: `app/restaurant/reservations.tsx`
-- **Availability Settings**: `app/restaurant/availability.tsx`
-- **Floor Plan Editor**: `app/restaurant/floorplan.tsx`
-
-### Delivery System
-- **Menu**: `app/(tabs)/(home)/menu.tsx`
-- **Cart**: `app/cart.tsx`
-- **Order Tracking**: `app/order-tracking.tsx`
-
-## 🗄️ Firestore Collections Used
-
-- `bookings` - All reservation bookings
-- `restaurant_availability` - Restaurant availability settings
-- `restaurant_staff` - Staff accounts
-- `staff_notifications` - Push notifications for staff
-- `floor_plans` - Floor plan layouts
-- `orders` - Delivery orders
-- `menu_items` - Restaurant menu items
-- `drivers` - Delivery drivers
-
-## 🎨 UI Features
-
-- Clean, modern mobile-first design
-- Dark/Light theme support (via ThemeContext)
-- Multi-language support (via LanguageContext)
-- Responsive layouts
-- Loading states and error handling
-- Success animations
-- Real-time updates
-
-## 📱 Navigation Structure
-
-### Restaurant Staff App
-```
-/restaurant/login → /restaurant/index (Dashboard)
-                  → /restaurant/reservations
-                  → /restaurant/availability
-                  → /restaurant/floorplan
-                  → /restaurant/notifications
-```
-
-### User App
-```
-/restaurant/[id] → /booking → Success
-/menu → /cart → /order-tracking
-```
-
-## ⚡ Quick Start Guide
-
-1. **For Restaurants**:
-   - Login at `/restaurant/login`
-   - Set up availability in `/restaurant/availability`
-   - Choose management mode (Guest Count or Table-Based)
-   - If table-based, create floor plan in `/restaurant/floorplan`
-   - Manage reservations in `/restaurant/reservations`
-
-2. **For Users**:
-   - Browse restaurants
-   - Click "Reserve a Table" → Opens `/booking`
-   - Select guests, date, time
-   - Confirm booking
-   - View bookings in profile
-
-3. **For Delivery**:
-   - Browse menu at `/menu`
-   - Add items to cart
-   - Checkout from `/cart`
-   - Track order at `/order-tracking`
-
-## 🛠️ Customization
-
-### Change Colors
-Update the primary color in all files by searching for `#2D6A4F` and replacing with your brand color.
-
-### Add More Features
-- Add payment integration in `app/booking.tsx` and `app/cart.tsx`
-- Add email confirmations in booking creation
-- Add SMS notifications
-- Add loyalty points system
-- Add review system after completed bookings/orders
+### Staff Management
+- ✅ Staff authentication
+- ✅ Role-based access control
+- ✅ Staff notifications
+- ✅ Performance tracking
 
 ## 📝 Notes
 
-- All Firebase operations are in the `utils/*Firebase.ts` files
-- All type definitions are in `types/` folder
-- Contexts use `@nkzw/create-context-hook` for clean state management
-- React Query is used for server state management
-- AsyncStorage is used for local persistence
+- All files use TypeScript with strict type checking
+- Designed for React Native with Expo
+- Backend uses tRPC with Hono
+- Real-time updates via Firebase
+- Mobile-first responsive design
+- Cross-platform (iOS, Android, Web)
 
-## 🐛 Common Issues
+## 🆘 Support
 
-1. **Bookings not showing**: Check Firestore rules and ensure staff has correct restaurantId
-2. **Availability not updating**: Make sure to save changes in availability screen
-3. **Tables not assigning**: Ensure tables are created and active in availability settings
-4. **Orders not tracking**: Verify driver location updates are working
-
-## 📦 File Sizes
-
-- Total TypeScript files: ~15,000 lines
-- Types: ~700 lines
-- Contexts: ~1,600 lines
-- Utils: ~800 lines
-- Screens: ~12,000 lines
+If you encounter issues after copying:
+1. Verify all files are copied with correct paths
+2. Check that all dependencies are installed
+3. Ensure Firebase is properly configured
+4. Update import paths if your project structure differs
 
 ---
 
-**Created for easy project migration**
-All files are production-ready and fully functional.
+**Total Files: 65**
+- Types: 3
+- Contexts: 5
+- Utils: 3
+- App Pages: 11
+- Backend Routes: 43
