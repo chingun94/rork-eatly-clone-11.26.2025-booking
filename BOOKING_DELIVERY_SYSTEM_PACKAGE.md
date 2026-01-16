@@ -1,10 +1,50 @@
-# 📦 Complete Booking & Delivery System Package
+# 📦 COMPLETE RESTAURANT BOOKING SYSTEM - EVERYTHING INCLUDED
 
-**Complete exportable package** of ALL files needed for the booking and delivery system, including UI components, pages, backend, and utilities. Copy this entire structure to transfer the system to another project.
+**🎯 ONE-STOP PACKAGE** - This document contains EVERYTHING you need for a complete restaurant booking system:
+- ✅ **Staff Login & Accounts** (managers, hosts, servers)
+- ✅ **Table Management** (add, edit, assign tables)
+- ✅ **Floor Plan Editor** (drag-and-drop visual editor)
+- ✅ **Reservation System** (customer booking, time slots)
+- ✅ **Live Service Dashboard** (arrived, done, cancel buttons)
+- ✅ **Admin Panel** (view all bookings, manage staff)
+- ✅ **Complete UI** (all screens, buttons, forms)
+- ✅ **Food Delivery System** (menu, cart, order tracking)
+
+**📱 Works on iOS, Android, and Web**
 
 ---
 
-## 📁 Complete Folder Structure
+## 🎬 QUICK START (For Non-Coders)
+
+### What This System Does:
+
+#### For Customers:
+1. Browse restaurants
+2. Click "Reserve" button
+3. Pick date, time, party size
+4. Get confirmation
+5. Order food for delivery
+6. Track order in real-time
+
+#### For Restaurant Staff:
+1. Login with email/password
+2. See today's reservations
+3. Mark guests as "Arrived" when they show up
+4. Mark "Done" when they leave
+5. Manage tables and floor plan
+6. Accept/manage food orders
+
+#### For Admins:
+1. View all bookings across restaurants
+2. Create staff accounts
+3. Manage restaurants
+4. View statistics
+
+---
+
+## 📁 COMPLETE FILE LIST - COPY ALL THESE FILES
+
+**IMPORTANT:** You need to copy ALL files listed below. Don't skip any! Each file is essential.
 
 ```
 your-project/
@@ -129,58 +169,152 @@ your-project/
                     └── update-location/route.ts  # Update driver location
 ```
 
-## 📋 Complete File Checklist
+---
 
-### 📘 Types (4 files)
-- [ ] `types/booking.ts` - Booking, availability, table type definitions
-- [ ] `types/restaurant-staff.ts` - Staff, roles, permissions type definitions
-- [ ] `types/delivery.ts` - Delivery, order, driver, menu type definitions
-- [ ] `types/restaurant.ts` - Restaurant type (if doesn't exist in your project)
+## ✅ COPY CHECKLIST - USE THIS TO TRACK YOUR PROGRESS
 
-### 🔄 Contexts (5 files)
-- [ ] `contexts/BookingContext.tsx` - Booking CRUD, availability checking
-- [ ] `contexts/RestaurantStaffAuthContext.tsx` - Staff login, permissions
-- [ ] `contexts/CartContext.tsx` - Add to cart, quantity management
-- [ ] `contexts/OrderContext.tsx` - Order creation, tracking
-- [ ] `contexts/MenuContext.tsx` - Menu items, categories
+**HOW TO USE THIS CHECKLIST:**
+1. Open your current project
+2. Open this new project where you want the booking system
+3. Copy each file one by one
+4. Check off each box as you copy
+5. Don't skip any files!
 
-### 🛠️ Utils (5 files)
-- [ ] `utils/bookingFirebase.ts` - Firebase booking CRUD operations
-- [ ] `utils/staffFirebase.ts` - Firebase staff operations
-- [ ] `utils/floorPlanFirebase.ts` - Firebase floor plan operations
-- [ ] `utils/formatHours.ts` - Format restaurant hours (optional)
-- [ ] `utils/isRestaurantOpen.ts` - Check if restaurant is open (optional)
+---
 
-### 🎨 UI Components (2 files)
-- [ ] `components/RestaurantCard.tsx` - Restaurant card with booking CTA
-- [ ] `components/ReviewModal.tsx` - Review modal (optional, if used)
+### PART 1: CORE TYPES (Must copy first)
 
-### 👤 User-Facing Pages (5 files)
-- [ ] `app/booking.tsx` - **Main booking page** (date, time, party size selection)
-- [ ] `app/cart.tsx` - Shopping cart with checkout
-- [ ] `app/order-tracking.tsx` - Live order tracking with driver location
-- [ ] `app/(tabs)/(home)/menu.tsx` - Food ordering menu
-- [ ] `app/(tabs)/(home)/write-review.tsx` - Write review page (optional)
+**⚠️ Copy these first! Everything else depends on these.**
 
-### 🏪 Restaurant Detail Pages (3 files)
-- [ ] `app/(tabs)/(home)/restaurant/[id].tsx` - **Restaurant detail** with Reserve button
-- [ ] `app/(tabs)/(home)/restaurant/reviews.tsx` - Restaurant reviews
-- [ ] `app/(tabs)/(home)/restaurant/branches.tsx` - Restaurant branches
+- [ ] **`types/booking.ts`** - Defines what a booking looks like (guest name, date, time, table, status)
+- [ ] **`types/restaurant-staff.ts`** - Defines staff roles (manager, host, server) and permissions
+- [ ] **`types/delivery.ts`** - Defines orders, menu items, drivers, delivery status
+- [ ] **`types/restaurant.ts`** - Restaurant info (name, address, hours). Skip if already exists in your project.
 
-### 👨‍💼 Staff Dashboard Pages (7 files)
-- [ ] `app/restaurant/_layout.tsx` - Restaurant section navigation
-- [ ] `app/restaurant/login.tsx` - **Staff login page**
-- [ ] `app/restaurant/index.tsx` - **Staff dashboard** (today's bookings, stats)
-- [ ] `app/restaurant/reservations.tsx` - **Live service** (Arrived, Done, Cancel buttons)
-- [ ] `app/restaurant/availability.tsx` - Time slot & capacity settings
-- [ ] `app/restaurant/floorplan.tsx` - Floor plan & table editor
-- [ ] `app/restaurant/notifications.tsx` - Staff notifications
+---
 
-### 🔐 Admin Pages (2 files)
-- [ ] `app/admin/bookings/index.tsx` - Admin bookings dashboard
-- [ ] `app/admin/staff/index.tsx` - Admin staff management
+### PART 2: STATE MANAGEMENT (Copy after types)
 
-### ⚙️ Backend Routes (43 files)
+**These handle data and user sessions:**
+
+- [ ] **`contexts/BookingContext.tsx`** - Creates, updates, cancels bookings. Gets available time slots.
+- [ ] **`contexts/RestaurantStaffAuthContext.tsx`** - Staff login/logout. Checks if staff is logged in.
+- [ ] **`contexts/CartContext.tsx`** - Shopping cart: add items, change quantity, checkout.
+- [ ] **`contexts/OrderContext.tsx`** - Creates orders, tracks delivery status.
+- [ ] **`contexts/MenuContext.tsx`** - Restaurant menu items and categories.
+
+---
+
+### PART 3: DATABASE HELPERS (Copy after contexts)
+
+**These talk to Firebase/backend:**
+
+- [ ] **`utils/bookingFirebase.ts`** - Saves/loads bookings from Firebase database.
+- [ ] **`utils/staffFirebase.ts`** - Saves/loads staff accounts from Firebase.
+- [ ] **`utils/floorPlanFirebase.ts`** - Saves/loads table layouts from Firebase.
+- [ ] **`utils/formatHours.ts`** - Makes hours look nice ("9:00 AM - 10:00 PM"). Optional.
+- [ ] **`utils/isRestaurantOpen.ts`** - Checks if restaurant is open now. Optional.
+
+---
+
+### PART 4: REUSABLE COMPONENTS (Copy these for UI)
+
+**Shared components used across multiple pages:**
+
+- [ ] **`components/RestaurantCard.tsx`** - Pretty card showing restaurant with "Reserve" button.
+- [ ] **`components/ReviewModal.tsx`** - Popup for writing reviews. Optional.
+- [ ] **`components/StarRating.tsx`** - Shows star ratings (⭐⭐⭐⭐⭐). Optional but recommended.
+
+---
+
+### PART 5: CUSTOMER PAGES (What customers see)
+
+**🍽️ Restaurant Browsing & Booking:**
+
+- [ ] **`app/(tabs)/(home)/home.tsx`** - Main page with restaurant list. Already exists? Just update it.
+- [ ] **`app/(tabs)/(home)/restaurant/[id].tsx`** - Restaurant details page with **"Reserve Table" button**.
+- [ ] **`app/(tabs)/(home)/restaurant/reviews.tsx`** - Shows restaurant reviews.
+- [ ] **`app/(tabs)/(home)/restaurant/branches.tsx`** - Multiple locations. Optional.
+- [ ] **`app/booking.tsx`** - **⭐ MAIN BOOKING PAGE** - Date picker, time slots, party size, special requests.
+
+**🍔 Food Ordering & Delivery:**
+
+- [ ] **`app/(tabs)/(home)/menu.tsx`** - Restaurant menu with "Add to Cart" buttons.
+- [ ] **`app/cart.tsx`** - Shopping cart page with checkout button.
+- [ ] **`app/order-tracking.tsx`** - Live map showing driver location.
+
+**✍️ Reviews (Optional):**
+
+- [ ] **`app/(tabs)/(home)/write-review.tsx`** - Write review form. Skip if not needed.
+
+
+
+---
+
+### PART 6: STAFF PAGES (Restaurant employee interface)
+
+**🔐 Authentication:**
+
+- [ ] **`app/restaurant/_layout.tsx`** - Navigation structure for staff section.
+- [ ] **`app/restaurant/login.tsx`** - **Staff login page** (email + password).
+
+**📊 Dashboard & Live Service:**
+
+- [ ] **`app/restaurant/index.tsx`** - **⭐ STAFF DASHBOARD** - Shows today's stats, bookings count, clickable cards.
+- [ ] **`app/restaurant/reservations.tsx`** - **⭐ MOST IMPORTANT** - Live reservation list with:
+  - ✅ "Arrived" button (guest showed up)
+  - ✅ "Done" button (guest finished, table free)
+  - ✅ "Cancel" button (no-show or cancellation)
+  - ✅ Table assignment
+  - ✅ Walk-in support
+
+**⚙️ Settings & Configuration:**
+
+- [ ] **`app/restaurant/availability.tsx`** - **⭐ IMPORTANT** - Configure:
+  - Time slots (e.g., 5:00 PM, 5:30 PM, 6:00 PM)
+  - Capacity per slot (e.g., 50 guests max)
+  - Which days are closed
+  - Table-based or guest-count mode
+
+**🪑 Table & Floor Management:**
+
+- [ ] **`app/restaurant/floorplan.tsx`** - **Visual floor plan editor**:
+  - Drag-and-drop tables
+  - Add new tables
+  - Set table capacity
+  - Enable/disable tables
+
+**🔔 Notifications:**
+
+- [ ] **`app/restaurant/notifications.tsx`** - Staff notification center (new bookings, cancellations).
+
+---
+
+### PART 7: ADMIN PAGES (Super admin interface)
+
+**📊 Admin Dashboard:**
+
+- [ ] **`app/admin/_layout.tsx`** - Admin navigation. Already exists? Skip it.
+- [ ] **`app/admin/bookings/index.tsx`** - **⭐ VIEW ALL BOOKINGS**:
+  - Filter by restaurant, date, status
+  - Search by name, phone, email
+  - Statistics (total, today, upcoming, cancelled)
+  - View booking details
+
+- [ ] **`app/admin/staff/index.tsx`** - **⭐ MANAGE STAFF ACCOUNTS**:
+  - Create new staff (email, password, role)
+  - Edit staff (change role, deactivate)
+  - Delete staff
+  - Assign to restaurants
+  - View permissions per role
+
+- [ ] **`app/admin/admins/index.tsx`** - Manage admin accounts. Optional.
+
+---
+
+### PART 8: BACKEND API (Server-side code)
+
+**⚠️ IMPORTANT: Copy ALL backend files. The app won't work without them!**
 
 #### Bookings (7 files)
 - [ ] `backend/trpc/routes/bookings/store.ts`
@@ -235,13 +369,65 @@ your-project/
 
 ---
 
-## 🚀 Setup Instructions
+---
 
-### 1. Copy All Files
-Copy **all files** listed in the checklist above while maintaining the exact folder structure.
+## 🚀 STEP-BY-STEP SETUP GUIDE (For Non-Coders)
 
-### 2. Update Root Layout (`app/_layout.tsx`)
-Wrap your app with the required providers:
+### ⚠️ READ THIS FIRST!
+
+After copying all files, you need to:
+1. **Install packages** (libraries the code needs)
+2. **Setup Firebase** (database where bookings are stored)
+3. **Register backend routes** (connect frontend to backend)
+4. **Update root layout** (add providers)
+5. **Test the system** (make sure it works)
+
+---
+
+### STEP 1: Copy All Files ✅
+
+**DO THIS:**
+1. Go through the checklist above
+2. Copy each file from this project to your new project
+3. Keep the same folder structure!
+   - If file is at `types/booking.ts`, put it in `types/booking.ts` in new project
+4. Don't rename files or folders
+5. Check off each box as you copy
+
+---
+
+### STEP 2: Install Required Packages 📦
+
+**COPY AND RUN THIS COMMAND:**
+
+Open your terminal and run:
+
+```bash
+npm install @tanstack/react-query @trpc/client @trpc/server firebase @react-native-async-storage/async-storage lucide-react-native expo-image expo-location react-native-maps @nkzw/create-context-hook
+```
+
+Wait for it to finish (takes 1-2 minutes).
+
+---
+
+### STEP 3: Update Root Layout (`app/_layout.tsx`) 🔧
+
+**IMPORTANT:** Your app needs these "providers" to work. Think of providers as power sources that give features to all pages.
+
+**FIND THIS FILE:** `app/_layout.tsx`
+
+**ADD THESE IMPORTS at the top:**
+
+```tsx
+import { BookingContextProvider } from '@/contexts/BookingContext';
+import { RestaurantStaffAuthProvider } from '@/contexts/RestaurantStaffAuthContext';
+import { CartProvider } from '@/contexts/CartContext';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+
+const queryClient = new QueryClient();
+```
+
+**THEN WRAP YOUR APP like this:**
 
 ```tsx
 import { BookingContextProvider } from '@/contexts/BookingContext';
@@ -267,8 +453,52 @@ export default function RootLayout() {
 }
 ```
 
-### 3. Register Backend Routes
-In your `backend/trpc/app-router.ts`, import and register all routes:
+**BEFORE (your old code might look like this):**
+```tsx
+export default function RootLayout() {
+  return (
+    <Stack />
+  );
+}
+```
+
+**AFTER (wrap with providers):**
+```tsx
+export default function RootLayout() {
+  return (
+    <QueryClientProvider client={queryClient}>
+      <RestaurantStaffAuthProvider>
+        <BookingContextProvider>
+          <CartProvider>
+            <Stack />
+          </CartProvider>
+        </BookingContextProvider>
+      </RestaurantStaffAuthProvider>
+    </QueryClientProvider>
+  );
+}
+```
+
+**⚠️ Order matters!** QueryClientProvider must be outermost.
+
+---
+
+### STEP 4: Register Backend Routes 🔌
+
+**FIND THIS FILE:** `backend/trpc/app-router.ts`
+
+**ADD THESE IMPORTS at the top:**
+
+```tsx
+import { bookingsRouter } from './routes/bookings/store';
+import { staffRouter } from './routes/staff/store';
+import { floorplansRouter } from './routes/floorplans/store';
+import { ordersRouter } from './routes/orders/store';
+import { menuRouter } from './routes/menu/store';
+import { driversRouter } from './routes/drivers/store';
+```
+
+**THEN ADD THESE ROUTES:**
 
 ```tsx
 import { bookingsRouter } from './routes/bookings/store';
@@ -289,26 +519,122 @@ export const appRouter = t.router({
 });
 ```
 
-### 4. Install Required Dependencies
+```tsx
+export const appRouter = t.router({
+  bookings: bookingsRouter,      // Handles reservations
+  staff: staffRouter,            // Staff accounts
+  floorplans: floorplansRouter,  // Table layouts
+  orders: ordersRouter,          // Food orders
+  menu: menuRouter,              // Restaurant menus
+  drivers: driversRouter,        // Delivery drivers
+  // ... your other existing routes (keep them!)
+});
+```
+
+---
+
+### STEP 5: Setup Firebase Database 🔥
+
+**Firebase is where all bookings, staff, and orders are stored.**
+
+#### A. Get Firebase Credentials
+
+1. Go to [Firebase Console](https://console.firebase.google.com)
+2. Create a project (or use existing)
+3. Click "Project Settings" (gear icon)
+4. Scroll to "Your apps" → Web app
+5. Copy the config values
+
+#### B. Add to Environment Variables
+
+**FIND OR CREATE:** `.env` file in your project root
+
+**ADD THESE:**
+
+```env
+# Firebase Configuration (get from Firebase Console)
+EXPO_PUBLIC_FIREBASE_API_KEY=your_api_key_here
+EXPO_PUBLIC_FIREBASE_AUTH_DOMAIN=your_project.firebaseapp.com
+EXPO_PUBLIC_FIREBASE_PROJECT_ID=your_project_id
+EXPO_PUBLIC_FIREBASE_STORAGE_BUCKET=your_project.appspot.com
+EXPO_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=123456789
+EXPO_PUBLIC_FIREBASE_APP_ID=1:123456789:web:abcdef
+
+# Optional: Google Maps API Key (for delivery tracking map)
+EXPO_PUBLIC_GOOGLE_MAPS_API_KEY=your_maps_key_here
+```
+
+**⚠️ Replace all the `your_*` values with your real Firebase values!**
+
+#### C. Create Firebase Collections
+
+**In Firebase Console:**
+
+1. Go to **Firestore Database**
+2. Click **"Create database"** (if not created)
+3. Choose **"Start in test mode"** for now
+4. Create these collections (click "Start collection"):
+
+**Required Collections:**
+- `bookings` - Stores all reservations
+- `staff` - Staff accounts
+- `floorplans` - Table layouts
+- `orders` - Food delivery orders
+- `menuItems` - Restaurant menus
+- `drivers` - Delivery drivers
+- `restaurantAvailability` - Time slot settings
+- `notifications` - Staff notifications
+
+**💡 TIP:** Collections are created automatically when you save first item. You can skip this step!
+
+#### D. Enable Firebase Authentication
+
+1. Go to **Authentication** in Firebase Console
+2. Click **"Get Started"**
+3. Click **"Sign-in method"** tab
+4. Enable **"Email/Password"**
+5. Click **"Save"**
+
+---
+
+### STEP 6: Test the System 🧪
+
+**Run your app:**
 
 ```bash
-# Core dependencies
-npm install @tanstack/react-query
-npm install @trpc/client @trpc/server
-npm install firebase
-npm install @react-native-async-storage/async-storage
-
-# UI & Icons
-npm install lucide-react-native
-npm install expo-image
-
-# Location & Maps (for delivery)
-npm install expo-location
-npm install react-native-maps
-
-# Utilities
-npm install @nkzw/create-context-hook
+npm start
 ```
+
+Or:
+
+```bash
+expro start
+```
+
+**Test Customer Flow:**
+1. ✅ Open app
+2. ✅ Find a restaurant
+3. ✅ Click "Reserve" or "Book Table"
+4. ✅ Select date, time, party size
+5. ✅ Submit booking
+6. ✅ See confirmation
+
+**Test Staff Flow:**
+1. ✅ Go to `/restaurant/login`
+2. ✅ Login with staff account (create one in admin first!)
+3. ✅ See dashboard with today's bookings
+4. ✅ Go to "Reservations"
+5. ✅ Click "Arrived" on a booking
+6. ✅ Click "Done" to complete
+
+**Test Admin Flow:**
+1. ✅ Go to `/admin/staff`
+2. ✅ Create a staff account
+3. ✅ Go to `/admin/bookings`
+4. ✅ See all bookings
+5. ✅ Filter and search
+
+---
 
 ### 5. Environment Variables
 Add to your `.env` file:
